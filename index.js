@@ -21,7 +21,7 @@ module.exports = function serverTiming (options) {
 
     const startAt = process.hrtime()
 
-    res.setMetric = setMetric(headers, opts)
+    res.setMetric = setMetric(res, headers, opts)
     res.startTime = startTime(timer)
     res.endTime = endTime(timer, res)
 
@@ -56,7 +56,7 @@ module.exports = function serverTiming (options) {
   }
 }
 
-function setMetric (headers, opts) {
+function setMetric (res, headers, opts) {
   return (name, value, description) => {
     if (typeof name !== 'string') {
       return console.warn('1st argument name is not string')
@@ -69,11 +69,14 @@ function setMetric (headers, opts) {
       ? value.toFixed(opts.precision)
       : value
 
-    const metric = typeof description !== 'string' || !description
+    const metric = { name, dur, description };
+    const formatted_metric = typeof description !== 'string' || !description
       ? `${name}; dur=${dur}`
       : `${name}; dur=${dur}; desc="${description}"`
 
-    headers.push(metric)
+    res.timings ??= [];
+    res.timings.push(metric);
+    headers.push(formatted_metric)
   }
 }
 
