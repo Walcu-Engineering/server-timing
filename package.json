@@ -1,6 +1,6 @@
 {
-  "name": "server-timing",
-  "version": "3.3.2",
+  "name": "@walcu-engineering/server-timing",
+  "version": "4.0.0",
   "description": "This module can add `ServerTiming` Header to http response, and be able to use express middleware",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/yosuke-furukawa/server-timing.git"
+    "url": "git+https://github.com/Walcu-Engineering/server-timing.git"
   },
   "keywords": [
     "server-timing",
@@ -19,12 +19,8 @@
     "middleware",
     "performance"
   ],
-  "author": "yosuke-furukawa",
+  "author": "The Walcu engineering team <devs@walcu.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/yosuke-furukawa/server-timing/issues"
-  },
-  "homepage": "https://github.com/yosuke-furukawa/server-timing#readme",
   "dependencies": {
     "on-headers": "^1.0.2"
   },
